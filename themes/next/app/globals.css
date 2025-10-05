@@ -201,7 +201,8 @@
   }
 
   .post-content table {
-    @apply w-full overflow-hidden rounded-lg border border-border text-left text-sm;
+    @apply w-full max-w-full overflow-x-auto rounded-lg border border-border text-left text-sm;
+    display: block;
   }
 
   .post-content thead {
@@ -211,14 +212,20 @@
   .post-content th,
   .post-content td {
     @apply border-b border-border px-3 py-2 align-top;
+    white-space: nowrap;
   }
 
   .post-content pre {
-    @apply overflow-x-auto rounded-lg border border-border bg-muted/60 p-4 text-sm font-mono;
+    @apply w-full max-w-full overflow-x-auto rounded-lg border border-border bg-muted/60 p-4 text-sm font-mono;
+  }
+
+  .post-content pre code {
+    @apply block;
+    min-width: max-content;
   }
 
   .post-content code {
-    @apply rounded-md bg-muted px-1 py-0.5 font-mono text-sm;
+    @apply rounded-md bg-muted px-1 py-0.5 font-mono text-sm break-words;
   }
 
   .post-content hr {

@@ -25,8 +25,9 @@ function runNextBuild(env, args = []) {
 }
 
 function copyDir(from, to) {
-  fs.rmSync(to, { recursive: true, force: true });
-  fs.mkdirSync(to, { recursive: true });
+  if (!fs.existsSync(to)) {
+    fs.mkdirSync(to, { recursive: true });
+  }
 
   fs.cpSync(from, to, {
     recursive: true,

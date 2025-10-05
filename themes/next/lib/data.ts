@@ -8,6 +8,8 @@ export type PlanetSite = {
   link?: string;
   locale?: string;
   items?: number;
+  items_per_page?: number;
+  render_full?: boolean;
   items_feed?: number;
   display_length?: number;
   post_update?: boolean;

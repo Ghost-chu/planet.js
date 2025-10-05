@@ -18,27 +18,41 @@ planet:
 
 ## Workflow
 
+> **Important:** The directory that contains your `config.yml` does **not** need a `package.json`. After running `planet`, copy or symlink this `next` theme folder beside your `config.yml` (e.g. `./next/`). All npm commands are executed inside that theme folder.
+
 1. **Fetch data from feeds**
 
    ```bash
    planet ./config.yml
    ```
 
-   This writes `data.json`, `atom.xml`, and `rss.xml` into `<output>/`.
+   This writes `data.json`, `atom.xml`, and `rss.xml` into the directory configured by `planet.output`.
 
-2. **Build the Next.js site**
+2. **Build and export the Next.js site**
 
    ```bash
-   npm run build:next -- --config ./config.yml
+   # from the directory that contains config.yml
+   npm --prefix ./themes/next install          # first time only
+   npm --prefix ./themes/next run export -- --config ./config.yml
    ```
 
-   The script:
-   - Resolves the output directory from the config.
-   - Requires `<output>/data.json` (generated in step 1).
-   - Runs `next build && next export`.
-   - Copies the static export into the same `<output>/` folder so feeds and pages live together.
+   or, if you prefer to `cd`:
 
-3. Serve or deploy the contents of `<output>/`.
+   ```bash
+   cd themes/next
+   npm install                                 # first time only
+   npm run export -- --config ../config.yml
+   ```
+
+   The `export` script:
+
+   - Resolves the output directory from `config.yml`.
+   - Requires `<planet.output>/data.json` (generated in step 1).
+   - Runs the full static export (`next build` + `next export`).
+   - Copies the exported site into `<planet.output>/`, alongside the feeds produced earlier.
+   - Leaves any existing files in `<planet.output>/` untouched.
+
+3. Serve or deploy the contents of `<planet.output>/`.
 
 ## Development
 

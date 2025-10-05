@@ -13,6 +13,8 @@ planet:
   output: public # output directory, make sure your web server can read in this place
   timeout: 30 # request timeout in seconds
   items: 100 # how many posts should be displayed?
+  items_per_page: 10 # how many posts to show on each page?
+  render_full: false # render full content instead of summaries?
   items_feed: 200 # maximum posts in feed
   display_length: 2000 # posts longer than this characters, a summary will be displayed (if available)
   post_update: false # use post update time in feeds. If enabled, post update date will be used to sort in list

@@ -9,9 +9,12 @@ function resolveConfigPath(rawPath) {
     throw new Error("Config path is required.");
   }
 
+  const initCwd = process.env.INIT_CWD && process.env.INIT_CWD.trim();
+  const baseDir = initCwd ? path.resolve(initCwd) : process.cwd();
+
   return path.isAbsolute(rawPath)
     ? rawPath
-    : path.resolve(process.cwd(), rawPath);
+    : path.resolve(baseDir, rawPath);
 }
 
 function loadConfig(configPath) {
