@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
@@ -39,6 +40,9 @@ export default function Home() {
             ) : null}
           </div>
           <div className="flex items-center gap-2 self-start">
+            <Button asChild variant="link">
+              <Link href="/">Home</Link>
+            </Button>
             <Button asChild variant="link">
               <a href="atom.xml">Atom</a>
             </Button>

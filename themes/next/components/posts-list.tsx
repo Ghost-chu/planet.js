@@ -94,7 +94,7 @@ function PostsListContent({
 
       const query = params.toString();
       const target = query ? `${pathname}?${query}` : pathname;
-      router.replace(target, { scroll: false });
+      router.replace(target, { scroll: true });
     },
     [pathname, router, searchParams, totalPages]
   );
@@ -120,7 +120,7 @@ function PostsListContent({
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h2 className="text-xl font-semibold">Recent posts</h2>
         <p className="text-muted-foreground text-sm">
-          Showing {showingStart}-{showingEnd} of {posts.length} loaded
+          Showing {showingStart} - {showingEnd} of {posts.length} loaded
           {totalAvailable > posts.length
             ? ` (${totalAvailable} total)`
             : ""}
