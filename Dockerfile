@@ -4,6 +4,10 @@ WORKDIR /var/www/html
 COPY    ["docker/", "/"]
 RUN     sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN     npm config -g set registry https://registry.npmmirror.com
+
+ENV PNPM_HOME="/usr/local/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
 RUN     apk add --no-cache nginx python3 \
             make g++ && \
         chmod +x /entrypoint.sh && \
