@@ -1,11 +1,10 @@
-FROM    node:alpine
+FROM    26-10-alpine
 
 WORKDIR /var/www/html
 
 COPY    ["docker/", "/"]
 RUN     sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN     npm config -g set registry https://registry.npmmirror.com
-RUN     wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 RUN     apk add --no-cache nginx python3 && \
         make g++ && \
         chmod +x /entrypoint.sh && \
