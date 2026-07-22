@@ -1,4 +1,4 @@
-FROM    ghcr.io/pnpm/pnpm:latest
+FROM    guergeiro/pnpm:26-10-alpine
 WORKDIR /var/www/html
 
 COPY    ["docker/", "/"]
