@@ -8,8 +8,7 @@ RUN     npm config -g set registry https://registry.npmmirror.com
 ENV PNPM_HOME="/usr/local/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-RUN     apk add --no-cache nginx python3 \
-            make g++ && \
+RUN     apk add --no-cache nginx python3 && \
         chmod +x /entrypoint.sh && \
         mkdir -p /run/nginx && \
         rm -f /etc/nginx/http.d/default.conf && \
