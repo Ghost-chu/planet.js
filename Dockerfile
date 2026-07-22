@@ -5,13 +5,13 @@ WORKDIR /var/www/html
 COPY    ["docker/", "/"]
 RUN     sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && \
         npm config -g set registry https://registry.npmmirror.com && \
-        apk add --no-cache nginx python3 \
+        apk add --no-cache nginx python3 pnpm \
         make g++ && \
         chmod +x /entrypoint.sh && \
         mkdir -p /run/nginx && \
         rm -f /etc/nginx/http.d/default.conf && \
         mkdir -p /config && \
-        npm install -g planet.js --unsafe-perm && \
+        pnpm install -g planet.js --unsafe-perm && \
         planet i && \
         chown -R node /var/www/html && \
         apk del make g++
