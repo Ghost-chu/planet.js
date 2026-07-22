@@ -3,7 +3,8 @@ FROM    node:alpine
 WORKDIR /var/www/html
 
 COPY    ["docker/", "/"]
-RUN     apk add --no-cache nginx python3 \
+RUN     sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && \
+        apk add --no-cache nginx python3 \
         make g++ && \
         chmod +x /entrypoint.sh && \
         mkdir -p /run/nginx && \
