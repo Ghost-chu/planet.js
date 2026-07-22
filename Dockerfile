@@ -13,7 +13,7 @@ RUN     apk add --no-cache nginx python3 && \
         mkdir -p /run/nginx && \
         rm -f /etc/nginx/http.d/default.conf && \
         mkdir -p /config && \
-        pnpm install -g planet.js --unsafe-perm && \
+        pnpm install -g . --unsafe-perm && \
         planet i && \
         chown -R node /var/www/html && \
         apk del make g++
